@@ -11,6 +11,9 @@ RUN \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/*
 
+ADD bin/docker-credential-ecr-login /usr/bin/docker-credential-ecr-login
 ADD bin/wrap-drone-docker.sh /bin/wrap-drone-docker.sh
+
+RUN echo '{"credsStore": "ecr-login"}' > $HOME/.docker/config.json
 
 ENTRYPOINT /bin/wrap-drone-docker.sh
