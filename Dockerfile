@@ -15,7 +15,7 @@ ADD bin/wrap-drone-docker.sh /bin/wrap-drone-docker.sh
 
 ADD bin/docker-credential-ecr-login /usr/bin/docker-credential-ecr-login
 RUN \
-	mkdir -p > $HOME/.docker && \
+	mkdir -p $HOME/.docker && \
 	echo '{"credsStore": "ecr-login"}' > $HOME/.docker/config.json
 
 ENTRYPOINT /bin/wrap-drone-docker.sh
